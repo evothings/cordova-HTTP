@@ -88,25 +88,6 @@ public class CordovaHttpPlugin extends CordovaPlugin {
             String value = args.getString(1);
             this.setHeader(header, value);
             callbackContext.success();
-        } else if (action.equals("uploadFile")) {
-            String urlString = args.getString(0);
-            JSONObject params = args.getJSONObject(1);
-            JSONObject headers = args.getJSONObject(2);
-            HashMap<?, ?> paramsMap = this.getMapFromJSONObject(params);
-            HashMap<String, String> headersMap = this.addToMap(this.globalHeaders, headers);
-            String filePath = args.getString(3);
-            String name = args.getString(4);
-            CordovaHttpUpload upload = new CordovaHttpUpload(urlString, paramsMap, headersMap, callbackContext, filePath, name);
-            cordova.getThreadPool().execute(upload);
-        } else if (action.equals("downloadFile")) {
-            String urlString = args.getString(0);
-            JSONObject params = args.getJSONObject(1);
-            JSONObject headers = args.getJSONObject(2);
-            HashMap<?, ?> paramsMap = this.getMapFromJSONObject(params);
-            HashMap<String, String> headersMap = this.addToMap(this.globalHeaders, headers);
-            String filePath = args.getString(3);
-            CordovaHttpDownload download = new CordovaHttpDownload(urlString, paramsMap, headersMap, callbackContext, filePath);
-            cordova.getThreadPool().execute(download);
         } else {
             return false;
         }

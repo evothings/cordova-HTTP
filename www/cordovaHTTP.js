@@ -26,7 +26,7 @@ var http = {
         return exec(success, failure, "CordovaHttpPlugin", "get", [url, params, headers]);
     },
     uploadFile: function(url, params, headers, filePath, name, success, failure) {
-        return exec(success, failure, "CordovaHttpPlugin", "uploadFile", [url, params, headers, filePath, name]);
+        throw "Function uploadFile is not supported by Evothings Viewer";
     },
 
     downloadFile: function(url, params, headers, filePath, success, failure) {

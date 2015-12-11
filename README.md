@@ -130,23 +130,18 @@ Execute a GET request.  Takes a URL, parameters, and headers.  See the [post](#p
     });
 
 ### uploadFile
-Uploads a file saved on the device.  Takes a URL, parameters, headers, filePath, and the name of the parameter to pass the file along as.  See the [post](#post) documentation for details on what is returned on success and failure.
+This function is not supported in the version of the cordova-HTTP plugin bundled with Evothings Viewer.
 
-    cordovaHTTP.uploadFile("https://google.com/", {
-        id: 12,
-        message: "test"
-    }, { Authorization: "OAuth2: token" }, "file:///somepicture.jpg", "picture", function(response) {
-        console.log(response.status);
-    }, function(response) {
-        console.error(response.error);
-    });
+If calling uploadFile an exception is thrown with the text "Function uploadFile is not supported by Evothings Viewer".
+
+For security reasons Evothings Viewer does not allow apps to read files on the phone. If you wish to use file upload, you can build your own version of Evothings Viewer [github.com/evothings/evothings-viewer](https://github.com/evothings/evothings-viewer) with the original version of this plugin [github.com/wymsee/cordova-HTTP](https://github.com/wymsee/cordova-HTTP).
 
 ### downloadFile
 This function is not supported in the version of the cordova-HTTP plugin bundled with Evothings Viewer.
 
 If calling downloadFile an exception is thrown with the text "Function downloadFile is not supported by Evothings Viewer".
 
-For security reasons Evothings Viewer does not allow apps to write to the file storage on the phone. If you wish to use file storage and the cordova-plugin-file plugin, you can build your own version of [Evothings Viewer](https://github.com/evothings/evothings-viewer).
+For security reasons Evothings Viewer does not allow apps to write to the file storage on the phone. If you wish to use file download, you can build your own version of Evothings Viewer [github.com/evothings/evothings-viewer](https://github.com/evothings/evothings-viewer) with the original version of this plugin [github.com/wymsee/cordova-HTTP](https://github.com/wymsee/cordova-HTTP).
 
 ## Libraries
 

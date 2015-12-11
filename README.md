@@ -146,6 +146,8 @@ This function is not supported in the version of the cordova-HTTP plugin bundled
 
 If calling downloadFile an exception is thrown with the text "Function downloadFile is not supported by Evothings Viewer".
 
+For security reasons Evothings Viewer does not allow apps to write to the file storage on the phone. If you wish to use file storage and the cordova-plugin-file plugin, you can build your own version of [Evothings Viewer](https://github.com/evothings/evothings-viewer).
+
 ## Libraries
 
 This plugin utilizes some awesome open source networking libraries.  These are both MIT licensed:

@@ -12,6 +12,5 @@
 - (void)post:(CDVInvokedUrlCommand*)command;
 - (void)get:(CDVInvokedUrlCommand*)command;
 - (void)uploadFile:(CDVInvokedUrlCommand*)command;
-- (void)downloadFile:(CDVInvokedUrlCommand*)command;
 
 @end

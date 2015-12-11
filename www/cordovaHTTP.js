@@ -28,38 +28,9 @@ var http = {
     uploadFile: function(url, params, headers, filePath, name, success, failure) {
         return exec(success, failure, "CordovaHttpPlugin", "uploadFile", [url, params, headers, filePath, name]);
     },
+
     downloadFile: function(url, params, headers, filePath, success, failure) {
-        /*
-         *
-         * Licensed to the Apache Software Foundation (ASF) under one
-         * or more contributor license agreements.  See the NOTICE file
-         * distributed with this work for additional information
-         * regarding copyright ownership.  The ASF licenses this file
-         * to you under the Apache License, Version 2.0 (the
-         * "License"); you may not use this file except in compliance
-         * with the License.  You may obtain a copy of the License at
-         *
-         *   http://www.apache.org/licenses/LICENSE-2.0
-         *
-         * Unless required by applicable law or agreed to in writing,
-         * software distributed under the License is distributed on an
-         * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-         * KIND, either express or implied.  See the License for the
-         * specific language governing permissions and limitations
-         * under the License.
-         *
-         * Modified by Andrew Stephan for Sync OnSet
-         *
-        */
-        var win = function(result) {
-            var entry = new (require('org.apache.cordova.file.FileEntry'))();
-            entry.isDirectory = false;
-            entry.isFile = true;
-            entry.name = result.file.name;
-            entry.fullPath = result.file.fullPath;
-            success(entry);
-        };
-        return exec(win, failure, "CordovaHttpPlugin", "downloadFile", [url, params, headers, filePath]);
+        throw "Function downloadFile is not supported by Evothings Viewer";
     }
 };
 
@@ -69,7 +40,7 @@ if (typeof angular !== "undefined") {
     angular.module('cordovaHTTP', []).factory('cordovaHTTP', function($timeout, $q) {
         function makePromise(fn, args, async) {
             var deferred = $q.defer();
-            
+
             var success = function(response) {
                 if (async) {
                     $timeout(function() {
@@ -79,7 +50,7 @@ if (typeof angular !== "undefined") {
                     deferred.resolve(response);
                 }
             };
-            
+
             var fail = function(response) {
                 if (async) {
                     $timeout(function() {
@@ -89,15 +60,15 @@ if (typeof angular !== "undefined") {
                     deferred.reject(response);
                 }
             };
-            
+
             args.push(success);
             args.push(fail);
-            
+
             fn.apply(http, args);
-            
+
             return deferred.promise;
         }
-        
+
         var cordovaHTTP = {
             useBasicAuth: function(username, password) {
                 return makePromise(http.useBasicAuth, [username, password]);

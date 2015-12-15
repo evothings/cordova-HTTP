@@ -129,6 +129,21 @@ Execute a GET request.  Takes a URL, parameters, and headers.  See the [post](#p
         console.error(response.error);
     });
 
+You may call get with a simplified syntax and leave out params and headers:
+
+    cordovaHTTP.get("https://google.com/",
+        function(response) {
+            // Print the response status code.
+            console.log(response.status);
+
+            // Print the returned data in the string response.data.
+            console.log(response.data);
+        },
+        function(response) {
+            console.error(response.error);
+        });
+
+
 ### uploadFile
 This function is not supported in the version of the cordova-HTTP plugin bundled with Evothings Viewer.
 

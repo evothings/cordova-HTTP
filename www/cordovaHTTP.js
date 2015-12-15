@@ -23,6 +23,15 @@ var http = {
         return exec(success, failure, "CordovaHttpPlugin", "post", [url, params, headers]);
     },
     get: function(url, params, headers, success, failure) {
+        // If second arg is a function we assume get is called
+        // without any params or headers. This simplifies
+        // calling get in the basic case.
+        if (typeof params == "function") {
+            success = params;
+            failure = headers;
+            params = {};
+            headers = {};
+        }
         return exec(success, failure, "CordovaHttpPlugin", "get", [url, params, headers]);
     },
     uploadFile: function(url, params, headers, filePath, name, success, failure) {

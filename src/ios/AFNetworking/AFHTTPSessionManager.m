@@ -47,6 +47,7 @@
 @end
 
 @implementation AFHTTPSessionManager
+@dynamic responseSerializer;
 
 + (instancetype)manager {
     return [[[self class] alloc] initWithBaseURL:nil];
@@ -312,7 +313,7 @@
 
     HTTPClient.requestSerializer = [self.requestSerializer copyWithZone:zone];
     HTTPClient.responseSerializer = [self.responseSerializer copyWithZone:zone];
-    
+
     return HTTPClient;
 }
 
